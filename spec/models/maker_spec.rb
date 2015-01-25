@@ -6,4 +6,5 @@ RSpec.describe Maker, :type => :model do
   subject { @maker }
 
   specify { expect(subject).to respond_to(:name) }
+  specify { expect(subject).to respond_to(:bodies) }
 end
