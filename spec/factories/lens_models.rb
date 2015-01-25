@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :lens_model do
-    name "MyString"
-maker nil
+    sequence(:name) { |n| "lens_#{n}" }
+    maker
   end
 
 end
