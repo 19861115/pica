@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :body do
-    name "MyString"
-maker nil
+    sequence(:name) { |n| "body_#{n}" }
+    maker
   end
 
 end
