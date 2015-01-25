@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Body, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @body = FactoryGirl.create(:body) }
+
+  subject { @body }
+
+  specify { expect(subject).to respond_to(:name) }
+  specify { expect(subject).to respond_to(:maker) }
 end
