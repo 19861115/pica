@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125144950) do
+ActiveRecord::Schema.define(version: 20150125152536) do
 
   create_table "bodies", force: true do |t|
     t.string   "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20150125144950) do
   end
 
   add_index "bodies", ["maker_id"], name: "index_bodies_on_maker_id"
+
+  create_table "lens_models", force: true do |t|
+    t.string   "name"
+    t.integer  "maker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lens_models", ["maker_id"], name: "index_lens_models_on_maker_id"
 
   create_table "makers", force: true do |t|
     t.string   "name"
