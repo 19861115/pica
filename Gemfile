@@ -18,4 +18,19 @@ end
 
 group :development do
   gem 'spring'
+  gem 'spring-commands-rspec'
+
+  gem 'guard-rspec'
+  gem 'guard-spring'
+
+  gem 'better_errors'
+
+  gem 'bullet'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'autodoc'
 end
