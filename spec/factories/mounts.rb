@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :mount do
-    body nil
-lens_model nil
+    body
+    lens_model
   end
 
 end
