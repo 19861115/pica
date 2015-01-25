@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :maker do
-    name "MyString"
+    sequence(:name) { |n| "maker_#{n}" }
   end
 
 end
