@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125152536) do
+ActiveRecord::Schema.define(version: 20150125155541) do
 
   create_table "bodies", force: true do |t|
     t.string   "name"
@@ -36,5 +36,15 @@ ActiveRecord::Schema.define(version: 20150125152536) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "mounts", force: true do |t|
+    t.integer  "body_id"
+    t.integer  "lens_model_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mounts", ["body_id"], name: "index_mounts_on_body_id"
+  add_index "mounts", ["lens_model_id"], name: "index_mounts_on_lens_model_id"
 
 end
