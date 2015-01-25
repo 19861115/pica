@@ -7,4 +7,5 @@ RSpec.describe Maker, :type => :model do
 
   specify { expect(subject).to respond_to(:name) }
   specify { expect(subject).to respond_to(:bodies) }
+  specify { expect(subject).to respond_to(:lenses) }
 end
