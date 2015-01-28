@@ -48,3 +48,7 @@ group :test do
   gem 'database_cleaner'
   gem 'autodoc'
 end
+
+group :production do
+  gem 'pg'
+end
