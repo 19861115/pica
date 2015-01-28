@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125155541) do
+ActiveRecord::Schema.define(version: 20150128133148) do
 
   create_table "bodies", force: true do |t|
     t.string   "name"
@@ -46,5 +46,20 @@ ActiveRecord::Schema.define(version: 20150125155541) do
 
   add_index "mounts", ["body_id"], name: "index_mounts_on_body_id"
   add_index "mounts", ["lens_model_id"], name: "index_mounts_on_lens_model_id"
+
+  create_table "pictures", force: true do |t|
+    t.string   "path"
+    t.string   "exposure_time"
+    t.string   "f_number"
+    t.string   "focal_length"
+    t.string   "iso"
+    t.integer  "body_id"
+    t.integer  "lens_model_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["body_id"], name: "index_pictures_on_body_id"
+  add_index "pictures", ["lens_model_id"], name: "index_pictures_on_lens_model_id"
 
 end
