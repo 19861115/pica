@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Body, :type => :model do
-  before { @body = FactoryGirl.create(:body) }
+  before { @body = FactoryGirl.build(:body) }
 
   subject { @body }
 

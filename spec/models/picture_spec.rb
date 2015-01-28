@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Picture, :type => :model do
-  before { @picture = FactoryGirl.create(:picture) }
+  before { @picture = FactoryGirl.build(:picture) }
 
   subject { @picture }
 
