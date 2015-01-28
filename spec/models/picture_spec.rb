@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Picture, :type => :model do
-  before { @picture = FactoryGirl.create(:picture) }
+  before { @picture = FactoryGirl.build(:picture) }
 
   subject { @picture }
 
@@ -12,4 +12,11 @@ RSpec.describe Picture, :type => :model do
   specify { expect(subject).to respond_to(:iso) }
   specify { expect(subject).to respond_to(:body) }
   specify { expect(subject).to respond_to(:lens) }
+
+  describe '#path' do
+    it 'can not be blank' do
+      @picture.path = ' '
+      expect(subject).not_to be_valid
+    end
+  end
 end
