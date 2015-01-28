@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LensModel, :type => :model do
-  before { @lens = FactoryGirl.create(:lens_model) }
+  before { @lens = FactoryGirl.build(:lens_model) }
 
   subject { @lens }
 
