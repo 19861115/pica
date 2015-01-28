@@ -1,3 +1,8 @@
+PATH
+  remote: plugins/exifr
+  specs:
+    exifr (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -185,6 +190,7 @@ DEPENDENCIES
   better_errors
   bullet
   database_cleaner
+  exifr!
   factory_girl_rails
   guard-rspec
   guard-spring
