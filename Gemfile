@@ -6,6 +6,20 @@ group :default do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'
   gem 'jbuilder', '~> 2.0'
+
+  # exifr
+  # 1. clone github.com/remvee/exifr to plugins/
+  # 2. edit pluins/exifr/lib/exifr/tiff.rb
+  #     before:
+  #         0xa420 => :image_unique_id
+  #       },
+  #     after:
+  #         0xa420 => :image_unique_id,
+  #         0xa433 => :lens_make,
+  #         0xa434 => :lens_model
+  #       },
+  # 3. bundle install
+  gem 'exifr', path: 'plugins/exifr'
 end
 
 group :test, :development do
