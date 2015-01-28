@@ -98,6 +98,7 @@ GEM
     notiffany (0.0.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -195,6 +196,7 @@ DEPENDENCIES
   guard-rspec
   guard-spring
   jbuilder (~> 2.0)
+  pg
   rails (= 4.1.6)
   rspec-rails
   sass-rails (~> 4.0.3)
