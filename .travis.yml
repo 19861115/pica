@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.1.2
+addons:
+  postgresql: "9.2"
+before_install:
+  - mkdir plugins
+  - git clone git://github.com/remvee/exifr plugins/exifr
+before_script:
+  - sed -i -e "s/:image_unique_id/:image_unique_id, 0xa433 => :lens_make, 0xa434 => :lens_model/" plugins/exifr/lib/exifr/tiff.rb
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+script:
+  - bundle exec rspec spec
