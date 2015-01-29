@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'bodies/index'
+
+  get 'bodies/show'
+
   get 'pictures/index'
 
   get 'pictures/new'
