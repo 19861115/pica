@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'lens_models/index'
+
+  get 'lens_models/show'
+
   get 'bodies/index'
 
   get 'bodies/show'
