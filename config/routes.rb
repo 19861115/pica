@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'makers/index'
+
+  get 'makers/show'
+
   get 'lens_models/index'
 
   get 'lens_models/show'
