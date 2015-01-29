@@ -7,4 +7,8 @@ class PicturesController < ApplicationController
 
   def show
   end
+
+  def init
+    render text: 'init'
+  end
 end
