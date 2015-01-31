@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get 'pictures/new'
   get 'pictures/show'
   get 'pictures/init'
+  post 'pictures/create'
 end
