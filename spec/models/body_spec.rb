@@ -15,4 +15,14 @@ RSpec.describe Body, :type => :model do
       expect(subject).not_to be_valid
     end
   end
+
+  describe '#new' do
+    context 'without maker' do
+      specify 'set default maker' do
+        body = Body.new(name: 'test body')
+        expect(body.name).to eq('test body')
+        expect(body.maker.name).to eq('undefined')
+      end
+    end
+  end
 end
