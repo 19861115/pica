@@ -36,10 +36,61 @@ RSpec.describe PicturesController, :type => :controller do
       expect(response).to have_http_status(:success)
     end
 
-    context "with valid params" do
+    context "with valid filepath" do
+      before do
+        Picture.delete_all
+        @params = { path: Rails.root.join('spec/dummy_pictures/exif-full.jpg').to_s }
+      end
+
       specify "add a picture" do
-        params = { path: Rails.root.join('spec/dummy_pictures/exif-full.jpg').to_s }
-        expect { post :create, params }.to change(Picture, :count).by(1)
+        expect { post :create, @params }.to change(Picture, :count).by(1)
+      end
+
+      specify "render show template" do
+        post :create, @params
+        expect(response).to render_template("show")
+      end
+    end
+
+    context "with registered filepath" do
+      before do
+        Picture.delete_all
+        path =  Rails.root.join('spec/dummy_pictures/exif-full.jpg').to_s
+        FactoryGirl.create(:picture, path: path) 
+        @params = { path: path }
+      end
+
+      specify "not add a picture" do
+        expect { post :create, @params }.not_to change(Picture, :count)
+      end
+
+      specify "render show template" do
+        post :create, @params
+        expect(response).to render_template("show")
+      end
+    end
+
+    context "with invalid filepath" do
+      before { @params = { path: Rails.root.join('spec/dummy_pictures/not-exist-file').to_s } }
+
+      specify "not add a picture" do
+        expect { post :create, @params }.not_to change(Picture, :count)
+      end
+
+      specify "render new template" do
+        post :create, @params
+        expect(response).to render_template("new")
+      end
+    end
+
+    context "with no filepath" do
+      specify "not add a picture" do
+        expect { post :create }.not_to change(Picture, :count)
+      end
+
+      specify "render new template" do
+        post :create
+        expect(response).to render_template("new")
       end
     end
   end
