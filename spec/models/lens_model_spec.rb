@@ -15,4 +15,14 @@ RSpec.describe LensModel, :type => :model do
       expect(subject).not_to be_valid
     end
   end
+
+  describe '#new' do
+    context 'without maker' do
+      specify 'set default maker' do
+        lens = LensModel.new(name: 'test lens')
+        expect(lens.name).to eq('test lens')
+        expect(lens.maker.name).to eq('undefined')
+      end
+    end
+  end
 end
