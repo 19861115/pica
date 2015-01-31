@@ -42,37 +42,5 @@ RSpec.describe PicturesController, :type => :controller do
         expect { post :create, params }.to change(Picture, :count).by(1)
       end
     end
-
-    context "with exif-full.jpg" do
-      before do
-        params = { path: Rails.root.join('spec/dummy_pictures/exif-full.jpg').to_s }
-        post :create, params
-      end
-
-      specify "set all exif-data" do
-        picture = Picture.last
-        expect(picture.path).not_to be_nil
-        expect(picture.exposure_time).not_to be_nil
-        expect(picture.f_number).not_to be_nil
-        expect(picture.focal_length).not_to be_nil
-        expect(picture.iso).not_to be_nil
-      end
-    end
-
-    context "with no-exif.jpg" do
-      before do
-        params = { path: Rails.root.join('spec/dummy_pictures/no-exif.jpg').to_s }
-        post :create, params
-      end
-
-      specify "set only path" do
-        picture = Picture.last
-        expect(picture.path).not_to be_nil
-        expect(picture.exposure_time).to be_nil
-        expect(picture.f_number).to be_nil
-        expect(picture.focal_length).to be_nil
-        expect(picture.iso).to be_nil
-      end
-    end
   end
 end
