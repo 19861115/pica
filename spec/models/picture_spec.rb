@@ -29,6 +29,8 @@ RSpec.describe Picture, :type => :model do
         expect(picture.f_number).not_to be_nil
         expect(picture.focal_length).not_to be_nil
         expect(picture.iso).not_to be_nil
+        expect(picture.body).not_to be_nil
+        expect(picture.lens).not_to be_nil
       end
     end
 
@@ -40,6 +42,8 @@ RSpec.describe Picture, :type => :model do
         expect(picture.f_number).to be_nil
         expect(picture.focal_length).to be_nil
         expect(picture.iso).to be_nil
+        expect(picture.body).to be_nil
+        expect(picture.lens).to be_nil
       end
     end
   end
