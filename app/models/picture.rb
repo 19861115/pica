@@ -7,7 +7,7 @@ class Picture < ActiveRecord::Base
 
   def initialize(attributes = {}, options = {})
     super
-    if self.path
+    if self.path && FileTest.file?(self.path)
       jpeg = EXIFR::JPEG.new(self.path)
       if jpeg.exif?
         self.attributes = {
@@ -34,6 +34,15 @@ class Picture < ActiveRecord::Base
           lens_model_id: LensModel.find_or_create_by(name: 'undefined').id
         }
       end
+    else
+      self.attributes = {
+        exposure_time: 'undefined',
+        f_number: 'undefined',
+        focal_length: 'undefined',
+        iso: 'undefined',
+        body_id: Body.find_or_create_by(name: 'undefined').id,
+        lens_model_id: LensModel.find_or_create_by(name: 'undefined').id
+      }
     end
   end
 

@@ -106,5 +106,18 @@ RSpec.describe Picture, :type => :model do
         expect(picture.lens.maker.name).not_to eq('undefined')
       end
     end
+
+    context "'not-exist-file'" do
+      specify 'set default exif-data' do
+        picture = Picture.new(path: Rails.root.join('spec/dummy_pictures/not-exist-file').to_s)
+        expect(picture.path).not_to be_nil
+        expect(picture.exposure_time).to eq('undefined')
+        expect(picture.f_number).to eq('undefined')
+        expect(picture.focal_length).to eq('undefined')
+        expect(picture.iso).to eq('undefined')
+        expect(picture.body.name).to eq('undefined')
+        expect(picture.lens.name).to eq('undefined')
+      end
+    end
   end
 end

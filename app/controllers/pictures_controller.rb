@@ -13,11 +13,11 @@ class PicturesController < ApplicationController
   end
 
   def create
-    if params[:path]
-      @picture = Picture.create(path: params[:path])
-      render text: 'created'
+    if params[:path] && File.file?(params[:path])
+      @picture = Picture.find_or_create_by(path: params[:path])
+      render :show
     else
-      render text: 'not created'
+      render :new
     end
   end
 end
