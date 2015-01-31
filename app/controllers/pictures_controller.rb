@@ -14,22 +14,8 @@ class PicturesController < ApplicationController
 
   def create
     if params[:path]
-      jpeg = EXIFR::JPEG.new(params[:path])
-      if jpeg.exif?
-        @picture = Picture.new(
-          path: params[:path],
-          exposure_time: jpeg.exposure_time.to_s,
-          f_number: jpeg.f_number.to_s,
-          focal_length: jpeg.focal_length.to_s,
-          iso: jpeg.iso_speed_ratings.to_s
-        )
-        @picture.save
-
-        render text: 'created'
-      else
-        @picture = Picture.create(path: params[:path])
-        render text: 'not created'
-      end
+      @picture = Picture.create(path: params[:path])
+      render text: 'created'
     else
       render text: 'not created'
     end
