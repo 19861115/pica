@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "PicturePages", :type => :request do
   describe "GET /pictures" do
     it "page exists" do
-      get pictures_index_path
+      get pictures_path
       expect(response).to have_http_status(200)
     end
 
     specify "page title is 'Pictures'" do
-      visit pictures_index_path
+      visit pictures_path
       expect(page).to have_title('Pictures')
       expect(page).to have_content('Pictures')
     end
@@ -16,7 +16,7 @@ RSpec.describe "PicturePages", :type => :request do
     context 'when some pictures registered' do
       before do
         10.times { FactoryGirl.create(:picture) }
-        visit pictures_index_path
+        visit pictures_path
       end
 
       specify "show registerd pictres" do
@@ -34,7 +34,7 @@ RSpec.describe "PicturePages", :type => :request do
     context 'when no picture registered' do
       before do
         Picture.delete_all
-        visit pictures_index_path
+        visit pictures_path
       end
 
       specify "show registerd pictres" do
