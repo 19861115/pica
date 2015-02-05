@@ -1,6 +1,14 @@
 <% provide(:title, 'Pictures') %>
 <h1>Pictures</h1>
 
+<%= form_tag('/pictures/init') do %>
+  <%= label_tag(:path, 'Pictures path') %>
+  <%= text_field_tag(:path) %>
+  <%= submit_tag("Import") %>
+<% end %>
+
+<hr />
+
 <% if @pictures.count > 0 %>
   <table>
     <th>
