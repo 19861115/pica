@@ -27,4 +27,8 @@ class PicturesController < ApplicationController
       render :new
     end
   end
+
+  def charts
+    render text: 'hoge'
+  end
 end
