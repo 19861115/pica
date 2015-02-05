@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   def index
+    @pictures = Picture.includes(:body, :lens_model).all.order(:path).page(params[:page]).per(100)
   end
 
   def new
@@ -9,7 +10,13 @@ class PicturesController < ApplicationController
   end
 
   def init
-    render text: 'init'
+    if params[:path]
+      Dir.glob(params[:path] + '**/*.{JPG,JPEG,jpg,jpeg}').each do |p|
+        Picture.find_or_create_by(path: p) if File.file?(p)
+      end
+    end
+    @pictures = Picture.includes(:body, :lens_model).all.order(:path).page(params[:page]).per(100)
+    render :index
   end
 
   def create

@@ -10,6 +10,8 @@ class Picture < ActiveRecord::Base
     if self.path && FileTest.file?(self.path)
       jpeg = EXIFR::JPEG.new(self.path)
       if jpeg.exif?
+        body_id = get_body_id(jpeg.model, jpeg.make)
+        lens_id = get_lens_id(jpeg.lens_model, jpeg.lens_make)
         self.attributes = {
           exposure_time:
           jpeg.exposure_time ? jpeg.exposure_time.to_s : 'undefined',
@@ -20,10 +22,11 @@ class Picture < ActiveRecord::Base
           iso:
           jpeg.iso_speed_ratings ? jpeg.iso_speed_ratings.to_s : 'undefined',
           body_id:
-          get_body_id(jpeg.model, jpeg.make),
+          body_id,
           lens_model_id:
-          get_lens_id(jpeg.lens_model, jpeg.lens_make)
+          lens_id
         }
+        Mount.find_or_create_by(body_id: body_id, lens_model_id: lens_id)
       else
         self.attributes = {
           exposure_time: 'undefined',

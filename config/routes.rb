@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
   # Makers
-  get 'makers/index'
-  get 'makers/show'
+  resources :makers, only: %w(index show)
 
   # Bodies
-  get 'bodies/index'
-  get 'bodies/show'
+  resources :bodies, only: %w(index show)
 
   # Lenses
   match 'lenses/index', to: 'lens_models#index', via: 'get'
   match 'lenses/show', to: 'lens_models#show', via: 'get'
 
   # Pictures
-  get 'pictures/index'
-  get 'pictures/new'
-  get 'pictures/show'
-  get 'pictures/init'
-  post 'pictures/create'
+  resources :pictures, only: %w(index new show init create)
+  post 'pictures/init'
 end

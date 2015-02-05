@@ -18,7 +18,7 @@ RSpec.describe PicturesController, :type => :controller do
 
   describe "GET show" do
     it "returns http success" do
-      get :show
+      get :show, params = { id: FactoryGirl.create(:picture).id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -27,6 +27,48 @@ RSpec.describe PicturesController, :type => :controller do
     it "returns http success" do
       get :init
       expect(response).to have_http_status(:success)
+    end
+
+    context "with valid filepath" do
+      before do
+        Picture.delete_all
+        @path = Rails.root.join('spec/dummy_pictures')
+        @params = { path: @path.to_s }
+      end
+
+      specify "add a picture(s)" do
+        count = Dir.glob(@path.join('**/*.{JPG,JPEG,jpg,jpeg}').to_s).count
+        expect { post :init, @params }.to change(Picture, :count).by(count)
+      end
+
+      specify "render index template" do
+        post :init, @params
+        expect(response).to render_template("index")
+      end
+    end
+
+    context "with invalid filepath" do
+      before { @params = { path: Rails.root.join('spec/not-exist-directory').to_s } }
+
+      specify "not add a picture" do
+        expect { post :init, @params }.not_to change(Picture, :count)
+      end
+
+      specify "render index template" do
+        post :init, @params
+        expect(response).to render_template("index")
+      end
+    end
+
+    context "with no filepath" do
+      specify "not add a picture" do
+        expect { post :init }.not_to change(Picture, :count)
+      end
+
+      specify "render index template" do
+        post :init
+        expect(response).to render_template("index")
+      end
     end
   end
 
