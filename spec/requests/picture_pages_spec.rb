@@ -13,6 +13,11 @@ RSpec.describe "PicturePages", :type => :request do
       expect(page).to have_content('Pictures')
     end
 
+    it "shows init form" do
+      visit pictures_path
+      expect(page).to have_field('Pictures path')
+    end
+
     context 'when some pictures registered' do
       before do
         10.times { FactoryGirl.create(:picture) }
