@@ -1,2 +1,29 @@
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<% provide(:title, 'Pictures') %>
+<h1>Pictures</h1>
+
+<% if @pictures.count > 0 %>
+  <table>
+    <th>
+      <td>path</td>
+      <td>esposure_time</td>
+      <td>f_number</td>
+      <td>focal_length</td>
+      <td>iso</td>
+      <td>body</td>
+      <td>lens</td>
+    </th>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= picture.path %></td>
+        <td><%= picture.exposure_time %></td>
+        <td><%= picture.f_number %></td>
+        <td><%= picture.focal_length %></td>
+        <td><%= picture.iso %></td>
+        <td><%= picture.body.name %></td>
+        <td><%= picture.lens.name %></td>
+        </td>
+      <% end %>
+  </table>
+<% else %>
+  <p>no pictures</p>
+<% end %>
