@@ -22,6 +22,8 @@ group :default do
   gem 'exifr', path: 'plugins/exifr'
 
   gem 'kaminari'
+
+  gem 'chartkick'
 end
 
 group :test, :development do
