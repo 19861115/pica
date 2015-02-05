@@ -138,6 +138,7 @@ RSpec.describe PicturesController, :type => :controller do
   end
 
   describe "GET charts" do
+    Picture.delete_all
     it "returns http success" do
       get :charts
       expect(response).to have_http_status(:success)
