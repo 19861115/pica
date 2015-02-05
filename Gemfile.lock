@@ -89,6 +89,9 @@ GEM
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     json (1.8.2)
+    kaminari (0.16.2)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -208,6 +211,7 @@ DEPENDENCIES
   guard-rspec
   guard-spring
   jbuilder (~> 2.0)
+  kaminari
   pg
   rails (= 4.1.6)
   rspec-rails

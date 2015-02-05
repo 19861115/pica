@@ -20,6 +20,8 @@ group :default do
   #       },
   # 3. bundle install
   gem 'exifr', path: 'plugins/exifr'
+
+  gem 'kaminari'
 end
 
 group :test, :development do
