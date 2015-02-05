@@ -20,6 +20,8 @@ group :default do
   #       },
   # 3. bundle install
   gem 'exifr', path: 'plugins/exifr'
+
+  gem 'kaminari'
 end
 
 group :test, :development do
@@ -42,11 +44,13 @@ group :development do
   gem 'bullet'
 end
 
-group :test do
+group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'autodoc'
+
+  gem 'capybara'
 end
 
 group :production do
