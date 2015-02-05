@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   def index
-    @pictures = Picture.all
+    @pictures = Picture.includes(:body, :lens_model).all.order(:path)
   end
 
   def new
@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
         Picture.find_or_create_by(path: p) if File.file?(p)
       end
     end
-    @pictures = Picture.all
+    @pictures = Picture.includes(:body, :lens_model).all.order(:path)
     render :index
   end
 
