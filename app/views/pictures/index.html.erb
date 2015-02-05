@@ -11,15 +11,15 @@
 
 <% if @pictures.count > 0 %>
   <table>
-    <th>
-      <td>path</td>
-      <td>esposure_time</td>
-      <td>f_number</td>
-      <td>focal_length</td>
-      <td>iso</td>
-      <td>body</td>
-      <td>lens</td>
-    </th>
+    <tr>
+      <th>path</th>
+      <th>esposure_time</th>
+      <th>f_number</th>
+      <th>focal_length</th>
+      <th>iso</th>
+      <th>body</th>
+      <th>lens</th>
+    </tr>
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= picture.path %></td>

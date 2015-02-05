@@ -10,7 +10,13 @@ class PicturesController < ApplicationController
   end
 
   def init
-    render text: 'init'
+    if params[:path]
+      Dir.glob(params[:path] + '**/*.{JPG,JPEG,jpg,jpeg}').each do |p|
+        Picture.find_or_create_by(path: p) if File.file?(p)
+      end
+    end
+    @pictures = Picture.all
+    render :index
   end
 
   def create
