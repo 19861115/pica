@@ -1,0 +1,22 @@
+<% provide(:title, 'Charts') %>
+<h1>Charts</h1>
+
+<% if @pictures %>
+  <h2>Pie chart of 'exposure time'</h2>
+  <%= pie_chart @exposure_times_sorted %>
+
+  <h2>Pie chart of 'f number'</h2>
+  <%= pie_chart @f_numbers_sorted %>
+
+  <h2>Pie chart of 'focal length'</h2>
+  <%= pie_chart @focal_lengthes_sorted %>
+
+  <h2>Pie chart of 'iso'</h2>
+  <%= pie_chart @isoes_sorted %>
+
+  <h2>Pie chart of 'body'</h2>
+  <%= pie_chart @bodies_sorted %>
+
+  <h2>Pie chart of 'lens'</h2>
+  <%= pie_chart @lenses_sorted %>
+<% end %>

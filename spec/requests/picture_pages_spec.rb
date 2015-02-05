@@ -47,4 +47,32 @@ RSpec.describe "PicturePages", :type => :request do
       end
     end
   end
+
+  describe 'GET /charts' do
+    before do
+      Picture.delete_all
+      10.times do
+        FactoryGirl.create(:picture,
+                           exposure_time: '1/10',
+                           f_number: '1.0',
+                           focal_length: '1/20')
+      end
+    end
+    it "page exists" do
+      get charts_path
+      expect(response).to have_http_status(200)
+    end
+
+    specify "page title is 'Charts'" do
+      visit charts_path
+      expect(page).to have_title('Charts')
+      expect(page).to have_content('Charts')
+      expect(page).to have_content("Pie chart of 'exposure time'")
+      expect(page).to have_content("Pie chart of 'f number'")
+      expect(page).to have_content("Pie chart of 'focal length'")
+      expect(page).to have_content("Pie chart of 'iso'")
+      expect(page).to have_content("Pie chart of 'body'")
+      expect(page).to have_content("Pie chart of 'lens'")
+    end
+  end
 end
