@@ -10,6 +10,7 @@
 <hr />
 
 <% if @pictures.count > 0 %>
+  <%= paginate @pictures %>
   <table>
     <tr>
       <th>path</th>
@@ -32,6 +33,7 @@
         </td>
       <% end %>
   </table>
+  <%= paginate @pictures %>
 <% else %>
   <p>no pictures</p>
 <% end %>
