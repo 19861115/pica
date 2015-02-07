@@ -3,6 +3,7 @@
 <head>
   <title>Pica<%= ':' + yield(:title) if content_for?(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
   <%= csrf_meta_tags %>
 </head>
 <body>

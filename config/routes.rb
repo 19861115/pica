@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # Pictures
   resources :pictures, only: %w(index new show init create)
   post 'pictures/init'
+  get '/charts', to: 'pictures#charts', as: :charts
 end
