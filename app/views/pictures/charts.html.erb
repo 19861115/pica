@@ -3,20 +3,22 @@
 
 <% if @pictures %>
   <h2>Pie chart of 'exposure time'</h2>
-  <%= pie_chart @exposure_times_sorted %>
+  <%= pie_chart @exposure_times %>
 
   <h2>Pie chart of 'f number'</h2>
-  <%= pie_chart @f_numbers_sorted %>
+  <%= pie_chart @f_numbers %>
 
   <h2>Pie chart of 'focal length'</h2>
-  <%= pie_chart @focal_lengthes_sorted %>
+  <%= pie_chart @focal_lengthes %>
 
   <h2>Pie chart of 'iso'</h2>
-  <%= pie_chart @isoes_sorted %>
+  <%= pie_chart @isoes %>
 
   <h2>Pie chart of 'body'</h2>
-  <%= pie_chart @bodies_sorted %>
+  <%= pie_chart @bodies %>
 
   <h2>Pie chart of 'lens'</h2>
-  <%= pie_chart @lenses_sorted %>
+  <%= pie_chart @lenses %>
+<% else %>
+  no picture
 <% end %>
