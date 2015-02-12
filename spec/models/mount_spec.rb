@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mount, :type => :model do
+RSpec.describe Mount, type: :model do
   before { @mount = FactoryGirl.create(:mount) }
 
   subject { @mount }
