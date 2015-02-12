@@ -83,6 +83,9 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    guard-rubocop (1.2.0)
+      guard (~> 2.0)
+      rubocop (~> 0.20)
     guard-spring (0.0.4)
       guard
       spring
@@ -225,6 +228,7 @@ DEPENDENCIES
   exifr!
   factory_girl_rails
   guard-rspec
+  guard-rubocop
   guard-spring
   jbuilder (~> 2.0)
   kaminari

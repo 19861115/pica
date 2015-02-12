@@ -46,6 +46,7 @@ group :development do
   gem 'bullet'
 
   gem 'rubocop'
+  gem 'guard-rubocop'
 end
 
 group :test, :development do
