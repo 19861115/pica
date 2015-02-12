@@ -44,6 +44,8 @@ group :development do
   gem 'better_errors'
 
   gem 'bullet'
+
+  gem 'rubocop'
 end
 
 group :test, :development do
