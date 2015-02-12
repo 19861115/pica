@@ -55,5 +55,5 @@ RSpec.configure do |config|
 end
 
 def dummy_picture_path(filename)
-  Rails.root.join('spec/dummy_pictures/' + filename.to_s).to_s
+  Rails.root.join('spec/dummy_pictures/' + filename).to_s
 end
