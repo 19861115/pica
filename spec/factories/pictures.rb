@@ -8,5 +8,4 @@ FactoryGirl.define do
     body
     lens_model
   end
-
 end

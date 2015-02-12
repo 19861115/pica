@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 group :default do
   gem 'rails', '4.1.6'
   gem 'sass-rails', '~> 4.0.3'
