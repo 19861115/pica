@@ -1,6 +1,8 @@
 class PicturesController < ApplicationController
   def index
-    @pictures = Picture.includes(:body, :lens_model).all.order(:path).page(params[:page]).per(100)
+    @pictures = Picture.includes(
+      :body, :lens_model
+    ).all.order(:path).page(params[:page]).per(100)
   end
 
   def new
@@ -15,7 +17,9 @@ class PicturesController < ApplicationController
         Picture.find_or_create_by(path: p) if File.file?(p)
       end
     end
-    @pictures = Picture.includes(:body, :lens_model).all.order(:path).page(params[:page]).per(100)
+    @pictures = Picture.includes(
+      :body, :lens_model
+    ).all.order(:path).page(params[:page]).per(100)
     render :index
   end
 
@@ -29,15 +33,14 @@ class PicturesController < ApplicationController
   end
 
   def charts
-    if Picture.count > 0
-      @pictures = Picture.includes(:body, :lens_model).all
-      @exposure_times = exposure_times(@pictures)
-      @f_numbers = f_numbers(@pictures)
-      @focal_lengthes = focal_lengthes(@pictures)
-      @isoes = isoes(@pictures)
-      @bodies = bodies(@pictures)
-      @lenses = lenses(@pictures)
-    end
+    return if Picture.count == 0
+    @pictures = Picture.includes(:body, :lens_model).all
+    @exposure_times = exposure_times(@pictures)
+    @f_numbers = f_numbers(@pictures)
+    @focal_lengthes = focal_lengthes(@pictures)
+    @isoes = isoes(@pictures)
+    @bodies = bodies(@pictures)
+    @lenses = lenses(@pictures)
   end
 
   private
@@ -56,7 +59,7 @@ class PicturesController < ApplicationController
     pictures.pluck(:exposure_time).uniq.each do |e|
       exposure_times[e] = Picture.where(exposure_time: e).count
     end
-    exposure_times.sort_by { |key, val| to_f(key) }
+    exposure_times.sort_by { |key, _val| to_f(key) }
   end
 
   def f_numbers(pictures)
@@ -64,7 +67,7 @@ class PicturesController < ApplicationController
     pictures.pluck(:f_number).uniq.each do |f|
       f_numbers[f] = Picture.where(f_number: f).count
     end
-    f_numbers.sort_by { |key, val| key }
+    f_numbers.sort_by { |key, _val| key }
   end
 
   def focal_lengthes(pictures)
@@ -72,7 +75,7 @@ class PicturesController < ApplicationController
     pictures.pluck(:focal_length).uniq.each do |f|
       focal_lengthes[to_f(f)] = Picture.where(focal_length: f).count
     end
-    focal_lengthes.sort_by { |key, val| key }
+    focal_lengthes.sort_by { |key, _val| key }
   end
 
   def isoes(pictures)
@@ -80,22 +83,24 @@ class PicturesController < ApplicationController
     pictures.pluck(:iso).uniq.each do |i|
       isoes[i] = Picture.where(iso: i).count
     end
-    isoes.sort_by { |key, val| key }
+    isoes.sort_by { |key, _val| key }
   end
 
   def bodies(pictures)
     bodies = {}
     pictures.pluck(:body_id).uniq.each do |b|
-      bodies[Body.find_by(id: b).name] = Picture.where(body_id: b).count
+      body_name = Body.find_by(id: b).name
+      bodies[body_name] = Picture.where(body_id: b).count
     end
-    bodies.sort_by { |key, val| key }
+    bodies.sort_by { |key, _val| key }
   end
 
   def lenses(pictures)
     lenses = {}
     pictures.pluck(:lens_model_id).uniq.each do |l|
-      lenses[LensModel.find_by(id: l).name] = Picture.where(lens_model_id: l).count
+      lens_name = LensModel.find_by(id: l).name
+      lenses[lens_name] = Picture.where(lens_model_id: l).count
     end
-    lenses.sort_by { |key, val| key }
+    lenses.sort_by { |key, _val| key }
   end
 end
