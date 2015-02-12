@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 group :default do
   gem 'rails', '4.1.6'
   gem 'sass-rails', '~> 4.0.3'
@@ -44,6 +43,9 @@ group :development do
   gem 'better_errors'
 
   gem 'bullet'
+
+  gem 'rubocop'
+  gem 'guard-rubocop'
 end
 
 group :test, :development do

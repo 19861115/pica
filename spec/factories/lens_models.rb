@@ -3,5 +3,4 @@ FactoryGirl.define do
     sequence(:name) { |n| "lens_#{n}" }
     maker
   end
-
 end

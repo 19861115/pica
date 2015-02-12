@@ -8,8 +8,10 @@ class Body < ActiveRecord::Base
 
   def initialize(attributes = {}, options = {})
     super
-    unless self.maker_id
-      self.attributes = { maker_id: Maker.find_or_create_by(name: 'undefined').id }
+    unless maker_id
+      self.attributes = {
+        maker_id: Maker.find_or_create_by(name: 'undefined').id
+      }
     end
   end
 end

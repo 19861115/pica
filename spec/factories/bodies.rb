@@ -3,5 +3,4 @@ FactoryGirl.define do
     sequence(:name) { |n| "body_#{n}" }
     maker
   end
-
 end

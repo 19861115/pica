@@ -1,0 +1,26 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - log/**/*
+    - bundle_bin/**/*
+    - bin/**/*
+    - public/**/*
+    - plugins/**/*
+    - vendor/**/*
+    - config/**/*
+    - Guardfile
+
+Documentation:
+  Enabled: false
+
+GuardClause:
+  MinBodyLength: 4
+
+MethodLength:
+  Max: 20
+
+BlockComments:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 25

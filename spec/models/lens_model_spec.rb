@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LensModel, :type => :model do
+RSpec.describe LensModel, type: :model do
   before { @lens = FactoryGirl.build(:lens_model) }
 
   subject { @lens }
