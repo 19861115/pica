@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "PicturePages", :type => :request do
+RSpec.describe 'PicturePages', type: :request do
   describe 'GET /pictures' do
     it 'page exists' do
       get pictures_path
@@ -24,7 +24,7 @@ RSpec.describe "PicturePages", :type => :request do
         visit pictures_path
       end
 
-      specify "show registerd pictures" do
+      specify 'show registerd pictures' do
         picture = Picture.first
         expect(page).to have_content(picture.path)
         expect(page).to have_content(picture.exposure_time)
@@ -62,7 +62,10 @@ RSpec.describe "PicturePages", :type => :request do
     end
 
     context 'when some pictures registered' do
-      before { post pictures_init_path, params = { path: 'spec/dummy_pictures' } }
+      before do
+        params = { path: 'spec/dummy_pictures' }
+        post pictures_init_path, params
+      end
 
       specify 'show charts' do
         visit charts_path
